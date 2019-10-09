@@ -1,0 +1,5 @@
+.idea
+*.log
+apps/database.php
+runtime/
+*/.DS_Store

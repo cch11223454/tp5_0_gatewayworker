@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<!--		<input type="button" value="断开" onclick="duankai()" />-->
+<h1>请在开发者工具中，查看console.log输出的信息</h1>
+</body>
+</html>
+<script>
+    ws = new WebSocket("ws://127.0.0.1:18282");
+
+
+    ws.onopen = function () {
+          console.log('websocket长连接已建立');  
+    };
+
+    ws.onmessage = function (res) {
+        var data = res.data || '';
+            data = JSON.parse(data);
+            var type=data.type;
+            console.log(data);
+            //
+            switch(type){
+                // Events.php中返回的init类型的消息，将client_id发给后台进行uid绑定
+                case 'init':
+                    console.log('websocket长连接client_id：'+data.client_id);
+                    break;
+                case 'test':
+                    console.log("收到服务端的消息：" + data.msg);
+                default :
+
+            }
+    };
+
+    ws.onerror = function(e) {
+        console.log('websocket连接出错！');
+    };
+
+
+</script>

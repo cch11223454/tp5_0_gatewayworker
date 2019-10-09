@@ -1,0 +1,62 @@
+Could not open input file: start,php
+Could not open input file: start.php
+Please install pcntl extension. See http://doc3.workerman.net/appendices/install-extension.html
+Please install pcntl extension. See http://doc3.workerman.net/appendices/install-extension.html
+Please install pcntl extension. See http://doc3.workerman.net/appendices/install-extension.html
+Please install pcntl extension. See http://doc3.workerman.net/appendices/install-extension.html
+[PHP Modules]
+bcmath
+bz2
+calendar
+Core
+ctype
+curl
+date
+dom
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+hash
+iconv
+imap
+intl
+json
+ldap
+libxml
+mbstring
+mcrypt
+mysqli
+mysqlnd
+openssl
+pcre
+PDO
+pdo_mysql
+pdo_pgsql
+pdo_sqlite
+pgsql
+Phar
+posix
+readline
+Reflection
+session
+SimpleXML
+soap
+sockets
+SPL
+sqlite3
+standard
+tokenizer
+wddx
+xml
+xmlreader
+xmlwriter
+xsl
+zip
+zlib
+
+[Zend Modules]
+
+Please install pcntl extension. See http://doc3.workerman.net/appendices/install-extension.html
