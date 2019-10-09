@@ -9,5 +9,5 @@ tp5.0结合gatewayworker
 /extend/workweman      --workerman与gatewayworker的核心类包
 /vender/GatewayClient/GatewayClient.php
 
-运行：在更目录下执行：php wensocket.php start
+运行：在项目根目录下执行：php wensocket.php start
 ```
