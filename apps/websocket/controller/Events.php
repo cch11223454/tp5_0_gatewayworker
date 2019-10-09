@@ -1,19 +1,17 @@
 <?php
-
 namespace app\websocket\controller;
-
 use think\Controller;
 use think\Request;
-
 use \GatewayWorker\Lib\Gateway;
 
 /**
  * 主逻辑
  * 主要是处理 onConnect onMessage onClose 三个方法
  * onConnect 和 onClose 如果不需要可以不用实现并删除
+ * 引入tp
  */
 
-class Events
+class Events extends Controller
 {
     public static function onWorkerStart($businessWorker)
     {
@@ -31,6 +29,7 @@ class Events
     public static function onConnect($client_id)
     {
         echo "$client_id 连接成功 \n";
+
         Gateway::sendToClient($client_id, json_encode(array(
             'type'      => 'init',
             'client_id' => $client_id
