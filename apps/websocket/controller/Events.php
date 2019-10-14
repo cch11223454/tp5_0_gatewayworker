@@ -8,7 +8,7 @@ use \GatewayWorker\Lib\Gateway;
  * 主逻辑
  * 主要是处理 onConnect onMessage onClose 三个方法
  * onConnect 和 onClose 如果不需要可以不用实现并删除
- * 引入tp
+ * 继承tp5的controller
  */
 
 class Events extends Controller
