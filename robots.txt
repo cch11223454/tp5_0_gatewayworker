@@ -2,3 +2,8 @@ User-agent: *
 Disallow:
 Disallow: /public/ 
 Disallow: /router.php
+Disallow: /websocket.php
+Disallow: /start_businessworker.php
+Disallow: /start_gateway.php
+Disallow: /start_register.php
+Disallow: /start_for_win.php
