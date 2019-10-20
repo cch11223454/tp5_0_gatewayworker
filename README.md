@@ -10,5 +10,8 @@ tp5.0结合gatewayworker，实现tp5.0框架内运行gatewayworker，业务逻�
 /extend/workweman      --workerman与gatewayworker的核心类包
 /vender/GatewayClient/GatewayClient.php
 
+
+
 运行：在项目根目录下执行：php wensocket.php start
+windows系统下双击 start_for_win.bat运行
 ```
