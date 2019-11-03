@@ -35,7 +35,7 @@ class GatewayClient
      *
      * @var string|array
      */
-    public static $registerAddress = '127.0.0.1:1238';
+    public static $registerAddress = '127.0.0.1:31238';
 
     /**
      * 秘钥
