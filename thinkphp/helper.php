@@ -6,7 +6,7 @@
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: fushengji
+// | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
 //------------------------
@@ -442,7 +442,7 @@ if (!function_exists('view')) {
      * @return \think\response\View
      */
     function view($template = '', $vars = [], $replace = [], $code = 200)
-    {
+    {   
         return Response::create($template, 'view', $code)->replace($replace)->assign($vars);
     }
 }
@@ -620,10 +620,10 @@ if (!function_exists('D')) {
             $class = '\app\mobile\model\\'.$name;
         }elseif(is_file(APP_PATH."/api/model/$name.php")){
             $class = '\app\api\model\\'.$name;
-        }elseif(is_file(APP_PATH."/Admincp/model/$name.php")){
-            $class = '\app\admincp\model\\'.$name;
-        }elseif(is_file(APP_PATH."/seller/model/$name.php")){
-            $class = '\app\seller\model\\'.$name;
+        }elseif(is_file(APP_PATH."/admin/model/$name.php")){
+            $class = '\app\admin\model\\'.$name;
+        }elseif(is_file(APP_PATH."/common/model/$name.php")){
+            $class = '\app\common\model\\'.$name;
         }
         if($class)
         {
@@ -648,7 +648,6 @@ if (!function_exists('U')) {
      */
     function  U($url='',$vars='',$suffix=true,$domain=false)
     {
-
         return Url::build($url, $vars, $suffix, $domain);
     }
 }
@@ -715,6 +714,7 @@ if (!function_exists('I')) {
         return $default;
     }
 }
+
 
 if (!function_exists('F')) {
     /**

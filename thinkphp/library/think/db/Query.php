@@ -149,19 +149,6 @@ class Query
         return $this->model;
     }
 
-
-    /**
-     *
-     * @access public
-     * @param array     $data 数据
-     * @return $this->insert($data);
-     */
-    public function add($data = [])
-    {
-        $this->insert($data);
-        return $this->getLastInsID();
-    }
-
     /**
      * 设置后续从主库读取数据
      * @access public
@@ -344,26 +331,6 @@ class Query
     public function rollback()
     {
         $this->connection->rollback();
-    }
-
-
-    /**
-     *
-     * 此函数提供作者 QQ名 IT草根
-     * @access public
-     * @param array     $data 数据
-     * @return integer|false
-     */
-    public function save($data = [])
-    {
-        if(isset($this->options['where']) && $this->options['where'])
-        {
-            return $this->update($data);
-        }
-        else
-        {
-            return $this->insert($data);
-        }
     }
 
     /**
@@ -2607,29 +2574,6 @@ class Query
     }
 
     /**
-     *
-     * 获取一条记录的某个字段值
-     * @access public
-     * @param string $field  字段名
-     * @param string $spea  字段数据间隔符号 NULL返回数组
-     * @return mixed
-     */
-    public function getField($field,$sepa=null) {
-        if($sepa == true)
-        {
-            return $this->column($field);
-        }elseif(strstr($field,','))
-        {
-            $field2 = explode(',', $field);
-            $f = array_shift($field2);
-            return $this->column($field,$f);
-        }else
-        {
-            return $this->value($field);
-        }
-    }
-
-    /**
      * 缓存数据
      * @access public
      * @param string    $key    缓存标识
@@ -3097,5 +3041,79 @@ class Query
             $result   = call_user_func_array($callback, [$params, $this]);
         }
         return $result;
+    }
+
+    /**
+     *
+     * 获取一条记录的某个字段值
+     * @access public
+     * @param string $field  字段名
+     * @param string $spea  字段数据间隔符号 NULL返回数组
+     * @return mixed
+     */
+    public function getField($field,$sepa=null) {
+        if($sepa == true)
+        {
+            return $this->column($field);
+        }elseif(strstr($field,','))
+        {
+            $field2 = explode(',', $field);
+            $f = array_shift($field2);
+            return $this->column($field,$f);
+        }else
+        {
+            return $this->value($field);
+        }
+    }
+
+    /**
+     *
+     * 此函数提供作者 QQ名 IT草根
+     * @access public
+     * @param array     $data 数据
+     * @return integer|false
+     */
+    public function save($data = [])
+    {
+        if(isset($this->options['where']) && $this->options['where'])
+        {
+            return $this->update($data);
+        }
+        else
+        {
+            return $this->insert($data);
+        }
+    }
+
+    /**
+     *
+     * @access public
+     * @param array     $data 数据
+     * @return $this->insert($data);
+     */
+    public function add($data = [])
+    {
+        $this->insert($data);
+        return $this->getLastInsID();
+    }
+
+    /**
+     *
+     * 设置允许写入的字段
+     * @access public
+     * @return $data
+     */
+    public function allowField($data)
+    {
+        $field = $this->getTableInfo('', 'fields');
+        // 检测字段
+        if (!empty($field)) {
+            foreach ($data as $key => $val) {
+                if (!in_array($key, $field)) {
+                    unset($data[$key]);
+                }
+            }
+        }
+        return $data;
     }
 }
