@@ -54,7 +54,6 @@ class Controller
     {
         $this->view    = View::instance(Config::get('template'), Config::get('view_replace_str'));
         $this->request = is_null($request) ? Request::instance() : $request;
-
         $this->request->isAjax() ? define('IS_AJAX',true) : define('IS_AJAX',false);  //
         ($this->request->method() == 'GET') ? define('IS_GET',true) : define('IS_GET',false);  //
         ($this->request->method() == 'POST') ? define('IS_POST',true) : define('IS_POST',false);  //
@@ -63,8 +62,7 @@ class Controller
         define('CONTROLLER_NAME',$this->request->controller()); // 当前控制器名称
         define('ACTION_NAME',$this->request->action()); // 当前操作名称是
         define('PREFIX',C('database.prefix')); // 数据库表前缀
-        $this->assign('action',ACTION_NAME);
-        $this->assign('template_now_time', time());//模板现在时间
+        
         // 控制器初始化
         $this->_initialize();
 
